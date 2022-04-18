@@ -1,12 +1,18 @@
 from django.forms import widgets, Media
 from django.utils.safestring import mark_safe
+from wagtail_icon_picker import settings
+
+
+bootstrap_icons_url = settings.get_config()["BOOTSTRAP_ICONS_URL"]
+fontawesome_icons_url = settings.get_config()["FONTAWESOME_ICONS_URL"]
+boxicons_icons_url = settings.get_config()["BOXICONS_ICONS_URL"]
 
 
 class BootstrapIconsInputWidget(widgets.TextInput):
     class Media:
         css = {
             "all": (
-                'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css',
+                bootstrap_icons_url,
                 "wagtail_icon_picker/css/icon-picker-widget.css",
             )
         }
@@ -64,8 +70,8 @@ class BootstrapIconPickerWidget(widgets.TextInput):
         return Media(
             css={
                 "all": [
-                    'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css',
-                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+                    bootstrap_icons_url,
+                    fontawesome_icons_url,
                     "wagtail_icon_picker/css/icon-picker-widget.css",
                 ]
             },
@@ -77,7 +83,7 @@ class FontAwesomeIconsInputWidget(widgets.TextInput):
     class Media:
         css = {
             "all": (
-                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+                fontawesome_icons_url,
                 "wagtail_icon_picker/css/icon-picker-widget.css",
             )
         }
@@ -135,7 +141,7 @@ class FontAwesomeIconPickerWidget(widgets.TextInput):
         return Media(
             css={
                 "all": [
-                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+                    fontawesome_icons_url,
                     "wagtail_icon_picker/css/icon-picker-widget.css",
                 ]
             },
@@ -147,7 +153,7 @@ class BoxIconsInputWidget(widgets.TextInput):
     class Media:
         css = {
             "all": (
-                'https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css',
+                boxicons_icons_url,
                 "wagtail_icon_picker/css/icon-picker-widget.css",
             )
         }
@@ -205,7 +211,7 @@ class BoxIconPickerWidget(widgets.TextInput):
         return Media(
             css={
                 "all": [
-                    'https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css',
+                    boxicons_icons_url,
                     "wagtail_icon_picker/css/icon-picker-widget.css",
                 ]
             },
